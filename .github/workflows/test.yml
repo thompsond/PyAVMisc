@@ -21,6 +21,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest
     - name: Run tests
-      working-directory: git-repo
+      working-directory: ./
       run: |
         pytest -q
