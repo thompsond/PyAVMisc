@@ -1,9 +1,9 @@
 """Tests for avmisc.py."""
 
-import unittest
+import pytest
 import avmisc
 
-class AVMiscTest(unittest.TestCase):
+class TestAVMisc():
   def testCommandDictValidity(self):
     """Validates the entries in the command dictionary.
 
@@ -11,9 +11,9 @@ class AVMiscTest(unittest.TestCase):
     and method.
     """
     for command in avmisc.COMMAND_DICT:
-      self.assertIn('description', avmisc.COMMAND_DICT[command])
-      self.assertIn('method', avmisc.COMMAND_DICT[command])
-      self.assertNotEqual(avmisc.COMMAND_DICT[command]['description'], '')
+      assert 'description' in avmisc.COMMAND_DICT[command]
+      assert 'method' in avmisc.COMMAND_DICT[command]
+      assert avmisc.COMMAND_DICT[command]['description'] != ''
 
   def testCommandEnumMatchesCommandDict(self):
     """Compares the Command enum to the command dictionary.
@@ -22,7 +22,4 @@ class AVMiscTest(unittest.TestCase):
     command dictionary.
     """
     for command in avmisc.Command:
-      self.assertIn(command, avmisc.COMMAND_DICT)
-
-if __name__ == '__main__':
-  unittest.main()
+      assert command in avmisc.COMMAND_DICT
