@@ -1,6 +1,6 @@
 """Tests for avmisc.py."""
 
-import pytest
+import pytest # pylint: disable=unused-import
 import avmisc
 
 class TestAVMisc():
@@ -10,10 +10,10 @@ class TestAVMisc():
     Makes sure each entry in the command dictionary has a description
     and method.
     """
-    for command in avmisc.COMMAND_DICT:
-      assert 'description' in avmisc.COMMAND_DICT[command]
-      assert 'method' in avmisc.COMMAND_DICT[command]
-      assert avmisc.COMMAND_DICT[command]['description'] != ''
+    for command_info in avmisc.COMMAND_DICT.values():
+      assert 'description' in command_info
+      assert 'method' in command_info
+      assert command_info['description'] != ''
 
   def testCommandEnumMatchesCommandDict(self):
     """Compares the Command enum to the command dictionary.
