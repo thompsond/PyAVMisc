@@ -8,7 +8,7 @@ class Command(Enum):
   LIST_ALL_AUDIO_DEVICES = 'list_all_audio_dev'
   EXIT = 'exit'
 
-COMMAND_DICT = {
+COMMANDS = {
   Command.LIST_DEFAULT_AUDIO_DEVICES: {
     'description': 'List the default audio devices on the system.',
     'method': audio_utils.list_default_devices
@@ -23,15 +23,23 @@ COMMAND_DICT = {
   }
 }
 
+def process_command(command: str) -> None:
+  """Runs the method associated with the given command if it is valid.
+
+  Args:
+    command: The name of the command to run.
+  """
+  try:
+    COMMANDS[Command(command)]['method']()
+  except ValueError:
+    print(f'\'{command}\' is not a recognized command. Type \'help\' for ' +
+      'a list of available commands.')
+
 def begin() -> None:
   """Serves as the entry method for AVMisc."""
   while True:
     command = input('avmisc>')
-    if command in COMMAND_DICT:
-      COMMAND_DICT[command]['method']()
-    else:
-      print(f'\'{command}\' is not a recognized command. Type \'help\' for ' +
-      'a list of available commands.')
+    process_command(command)
 
 
 if __name__ == '__main__':

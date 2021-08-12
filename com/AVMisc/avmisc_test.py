@@ -10,7 +10,7 @@ class TestAVMisc():
     Makes sure each entry in the command dictionary has a description
     and method.
     """
-    for command_info in avmisc.COMMAND_DICT.values():
+    for command_info in avmisc.COMMANDS.values():
       assert 'description' in command_info
       assert 'method' in command_info
       assert command_info['description'] != ''
@@ -22,4 +22,4 @@ class TestAVMisc():
     command dictionary.
     """
     for command in avmisc.Command:
-      assert command in avmisc.COMMAND_DICT
+      assert command in avmisc.COMMANDS
