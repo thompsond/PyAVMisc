@@ -24,6 +24,3 @@ def list_default_devices() -> None:
 def list_all_devices() -> None:
   """Lists all audio devices on the system."""
   print(sd.query_devices())
-
-if __name__ == '__main__':
-  list_default_devices()
