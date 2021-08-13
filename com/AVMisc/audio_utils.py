@@ -2,8 +2,10 @@
 
 from typing import Dict
 import sounddevice as sd
+import soundfile as sf
+import common_utils
 
-def _get_simple_info(device_info: Dict) -> str:
+def get_simple_info(device_info: Dict) -> str:
   """Generates a simple string containing the device name and sample rate.
 
   Args:
@@ -14,8 +16,8 @@ def _get_simple_info(device_info: Dict) -> str:
 
 def list_default_devices() -> None:
   """Lists the default audio devices on the system."""
-  input_device_info = _get_simple_info(sd.query_devices(kind='input'))
-  output_device_info = _get_simple_info(sd.query_devices(kind='output'))
+  input_device_info = get_simple_info(sd.query_devices(kind='input'))
+  output_device_info = get_simple_info(sd.query_devices(kind='output'))
   print('DEFAULT INPUT DEVICE:\n'
         f'{input_device_info}\n\n'
         'DEFAULT OUTPUT DEVICE:\n'
@@ -24,3 +26,15 @@ def list_default_devices() -> None:
 def list_all_devices() -> None:
   """Lists all audio devices on the system."""
   print(sd.query_devices())
+
+def play_audio_file() -> None:
+  """Plays an audio file if it exists."""
+  try:
+    filename = common_utils.get_file_path()
+    data, fs = sf.read(filename)
+    sd.play(data, fs)
+    sd.wait()
+  except KeyboardInterrupt:
+    print('Stopping audio playback')
+  except FileNotFoundError as err:
+    print(err)
