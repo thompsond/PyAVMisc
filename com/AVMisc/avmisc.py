@@ -12,6 +12,8 @@ class Command(Enum):
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
   TAKE_SCREENSHOT = 'screenshot'
   CLIPBOARD = 'clipboard'
+  START_CURSOR_JUMP = 'start_cursor_jump'
+  SPEAK_TEXT = 'speak_text'
   HELP = 'help'
   EXIT = 'exit'
 
@@ -39,6 +41,14 @@ COMMANDS = {
     Command.CLIPBOARD: {
         'description': 'View the contents of the clipboard.',
         'method': misc_utils.get_clipboard_contents
+    },
+    Command.START_CURSOR_JUMP: {
+        'description': 'Make the cursor move to random locations.',
+        'method': misc_utils.start_cursor_jump
+    },
+    Command.SPEAK_TEXT: {
+        'description': 'Enter some text to speak through the system.',
+        'method': misc_utils.speak_text
     },
     Command.EXIT: {
         'description': 'Exit the program.',
