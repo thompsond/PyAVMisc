@@ -1,5 +1,6 @@
 """A collection of helper functions for AVMisc."""
 
+from datetime import datetime
 from os import path
 
 def get_file_path() -> str:
@@ -17,3 +18,6 @@ def get_file_path() -> str:
   if not path.exists(file_path):
     raise FileNotFoundError(f'The file \'{file_path}\' does not exist.')
   return file_path
+
+def get_formatted_date():
+  return datetime.now().strftime('%m_%d_%Y_%H_%M_%S')
