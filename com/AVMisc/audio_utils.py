@@ -33,8 +33,9 @@ def play_audio_file() -> None:
     filename = common_utils.get_file_path()
     data, fs = sf.read(filename)
     sd.play(data, fs)
-    sd.wait()
-  except KeyboardInterrupt:
-    print('Stopping audio playback')
   except FileNotFoundError as err:
     print(err)
+
+def stop_playing_audio() -> None:
+  """Stops playing audio."""
+  sd.stop()

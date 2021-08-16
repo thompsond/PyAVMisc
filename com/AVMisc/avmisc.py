@@ -7,26 +7,36 @@ import audio_utils
 class Command(Enum):
   LIST_DEFAULT_AUDIO_DEVICES = 'list_def_audio_dev'
   LIST_ALL_AUDIO_DEVICES = 'list_all_audio_dev'
+  PLAY_AUDIO = 'play_audio'
+  STOP_PLAYING_AUDIO = 'stop_audio_playback'
   HELP = 'help'
   EXIT = 'exit'
 
 COMMANDS = {
-  Command.LIST_DEFAULT_AUDIO_DEVICES: {
-    'description': 'List the default audio devices on the system.',
-    'method': audio_utils.list_default_devices
-  },
-  Command.LIST_ALL_AUDIO_DEVICES: {
-    'description': 'List all the audio devices on the system.',
-    'method': audio_utils.list_all_devices
-  },
-  Command.EXIT: {
-    'description': 'Exit the program.',
-    'method': sys.exit
-  },
-  Command.HELP: {
-    'description': 'Show this help message.',
-    'method': None
-  }
+    Command.LIST_DEFAULT_AUDIO_DEVICES: {
+        'description': 'List the default audio devices on the system.',
+        'method': audio_utils.list_default_devices
+    },
+    Command.LIST_ALL_AUDIO_DEVICES: {
+        'description': 'List all the audio devices on the system.',
+        'method': audio_utils.list_all_devices
+    },
+    Command.PLAY_AUDIO: {
+        'description': 'Play an audio file on the system.',
+        'method': audio_utils.play_audio_file
+    },
+    Command.STOP_PLAYING_AUDIO: {
+        'description': 'Stop playing audio.',
+        'method': audio_utils.stop_playing_audio
+    },
+    Command.EXIT: {
+        'description': 'Exit the program.',
+        'method': sys.exit
+    },
+    Command.HELP: {
+        'description': 'Show this help message.',
+        'method': None
+    }
 }
 
 def _print_help() -> None:
@@ -53,13 +63,15 @@ def process_command(command: str) -> None:
 def begin() -> None:
   """Serves as the entry method for AVMisc."""
   while True:
-    print('[bold blue]avmisc>', end=' ')
-    command = input('')
     try:
+      print('[bold blue]avmisc>', end=' ')
+      command = input('')
       if command == Command.HELP.value:
         _print_help()
       else:
         process_command(command)
+    except KeyboardInterrupt:
+      sys.exit()
     except ValueError:
       print(f'\'{command}\' is not a recognized command. Type \'help\' for ' +
       'a list of available commands.')
