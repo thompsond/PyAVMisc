@@ -3,12 +3,15 @@ import sys
 from enum import Enum
 from rich import print
 import audio_utils
+import misc_utils
 
 class Command(Enum):
   LIST_DEFAULT_AUDIO_DEVICES = 'list_def_audio_dev'
   LIST_ALL_AUDIO_DEVICES = 'list_all_audio_dev'
   PLAY_AUDIO = 'play_audio'
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
+  TAKE_SCREENSHOT = 'screenshot'
+  CLIPBOARD = 'clipboard'
   HELP = 'help'
   EXIT = 'exit'
 
@@ -28,6 +31,14 @@ COMMANDS = {
     Command.STOP_PLAYING_AUDIO: {
         'description': 'Stop playing audio.',
         'method': audio_utils.stop_playing_audio
+    },
+    Command.TAKE_SCREENSHOT: {
+        'description': 'Take a screenshot.',
+        'method': misc_utils.take_screenshot
+    },
+    Command.CLIPBOARD: {
+        'description': 'View the contents of the clipboard.',
+        'method': misc_utils.get_clipboard_contents
     },
     Command.EXIT: {
         'description': 'Exit the program.',
