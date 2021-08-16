@@ -19,5 +19,5 @@ def get_file_path() -> str:
     raise FileNotFoundError(f'The file \'{file_path}\' does not exist.')
   return file_path
 
-def get_formatted_date():
+def get_formatted_date() -> str:
   return datetime.now().strftime('%m_%d_%Y_%H_%M_%S')
