@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install PortAudio
+    - name: Install PortAudio and SoundFile
       run: |
-        sudo apt-get install --no-install-recommends libportaudio2
+        sudo apt-get install --no-install-recommends libportaudio2 libsndfile1
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
