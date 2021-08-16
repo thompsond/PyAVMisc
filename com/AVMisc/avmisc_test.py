@@ -17,7 +17,7 @@ class TestAVMisc():
       assert 'description' in command_info
       assert 'method' in command_info
       assert command_info['description'] != ''
-      assert re.match('[A-Z].+[.]', command_info['description']) != None
+      assert re.match('[A-Z].+[.]', command_info['description']) is not None
 
   def testCommandEnumMatchesCommandDict(self):
     """Compares the Command enum to the command dictionary.

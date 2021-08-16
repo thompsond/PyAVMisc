@@ -1,9 +1,9 @@
 """A collection of miscellaneous functions for accessing system devices."""
 
-import pyautogui
-from common_utils import get_formatted_date
 from random import seed, randint
 from time import sleep
+import pyautogui
+from common_utils import get_formatted_date
 import pyperclip
 import pyttsx3
 

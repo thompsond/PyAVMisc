@@ -6,6 +6,7 @@ import audio_utils
 import misc_utils
 
 class Command(Enum):
+  """All of the commands for AVMisc."""
   LIST_DEFAULT_AUDIO_DEVICES = 'list_def_audio_dev'
   LIST_ALL_AUDIO_DEVICES = 'list_all_audio_dev'
   PLAY_AUDIO = 'play_audio'
