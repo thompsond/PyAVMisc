@@ -1,5 +1,6 @@
 """Tests for avmisc.py."""
 
+import re
 import pytest
 import avmisc
 from avmisc import Command, COMMANDS
@@ -9,12 +10,14 @@ class TestAVMisc():
     """Validates the entries in the command dictionary.
 
     Makes sure each entry in the command dictionary has a description
-    and method.
+    and method. Also makes sure that each description starts with a capital
+    letter and ends with a period.
     """
     for command_info in COMMANDS.values():
       assert 'description' in command_info
       assert 'method' in command_info
       assert command_info['description'] != ''
+      assert re.match('[A-Z].+[.]', command_info['description']) != None
 
   def testCommandEnumMatchesCommandDict(self):
     """Compares the Command enum to the command dictionary.
