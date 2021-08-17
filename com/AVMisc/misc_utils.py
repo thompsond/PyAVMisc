@@ -20,6 +20,10 @@ def take_screenshot() -> None:
 def get_clipboard_contents() -> None:
   print(pyperclip.paste() or 'Nothing on the clipboard.')
 
+def set_clipboard_contents() -> None:
+  text = input('Enter the text to save to the clipboard: ')
+  pyperclip.copy(text)
+
 def start_cursor_jump() -> None:
   """Make the cursor move to random locations on the screen."""
   seed(1)

@@ -12,7 +12,8 @@ class Command(Enum):
   PLAY_AUDIO = 'play_audio'
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
   TAKE_SCREENSHOT = 'screenshot'
-  CLIPBOARD = 'clipboard'
+  READ_CLIPBOARD = 'read_clipboard'
+  WRITE_CLIPBOARD = 'write_clipboard'
   START_CURSOR_JUMP = 'start_cursor_jump'
   SPEAK_TEXT = 'speak_text'
   HELP = 'help'
@@ -39,9 +40,13 @@ COMMANDS = {
         'description': 'Take a screenshot.',
         'method': misc_utils.take_screenshot
     },
-    Command.CLIPBOARD: {
+    Command.READ_CLIPBOARD: {
         'description': 'View the contents of the clipboard.',
         'method': misc_utils.get_clipboard_contents
+    },
+    Command.WRITE_CLIPBOARD: {
+        'description': 'Write some text to the clipboard.',
+        'method': misc_utils.set_clipboard_contents
     },
     Command.START_CURSOR_JUMP: {
         'description': 'Make the cursor move to random locations.',
