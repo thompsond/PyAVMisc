@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install PortAudio and SoundFile
+    - name: Install PortAudio, SoundFile, and xvfb
       run: |
-        sudo apt-get install --no-install-recommends libportaudio2 libsndfile1
+        sudo apt-get install --no-install-recommends libportaudio2 libsndfile1 xvfb
     - uses: actions/checkout@v2
     - name: Set up Python 3.9
       uses: actions/setup-python@v2
@@ -26,7 +26,5 @@ jobs:
         pytype .
     - name: Run tests
       working-directory: ./
-      env:
-        DISPLAY: :0.0
       run: |
-        python -m pytest -q
+        xvfb-run python -m pytest -q
