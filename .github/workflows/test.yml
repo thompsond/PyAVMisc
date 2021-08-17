@@ -26,5 +26,7 @@ jobs:
         pytype .
     - name: Run tests
       working-directory: ./
+      env:
+        DISPLAY: 0
       run: |
         python -m pytest -q
