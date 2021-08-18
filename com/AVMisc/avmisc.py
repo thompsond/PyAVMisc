@@ -5,12 +5,17 @@ from rich import print
 import audio_utils
 import misc_utils
 
+class InvalidCommandError(Exception):
+  pass
+
 class Command(Enum):
   """All of the commands for AVMisc."""
   LIST_DEFAULT_AUDIO_DEVICES = 'list_def_audio_dev'
   LIST_ALL_AUDIO_DEVICES = 'list_all_audio_dev'
   PLAY_AUDIO = 'play_audio'
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
+  RECORD_AUDIO = 'record_audio'
+  STOP_RECORDING_AUDIO = 'stop_recording_audio'
   TAKE_SCREENSHOT = 'screenshot'
   READ_CLIPBOARD = 'read_clipboard'
   WRITE_CLIPBOARD = 'write_clipboard'
@@ -35,6 +40,14 @@ COMMANDS = {
     Command.STOP_PLAYING_AUDIO: {
         'description': 'Stop playing audio.',
         'method': audio_utils.stop_playing_audio
+    },
+    Command.RECORD_AUDIO: {
+        'description': 'Record audio on the system.',
+        'method': audio_utils.start_recording_audio
+    },
+    Command.STOP_RECORDING_AUDIO: {
+        'description': 'Stop recording audio.',
+        'method': audio_utils.stop_recording_audio
     },
     Command.TAKE_SCREENSHOT: {
         'description': 'Take a screenshot.',
@@ -85,7 +98,7 @@ def process_command(command: str) -> None:
   if command in [member.value for member in Command.__members__.values()]:
     COMMANDS[Command(command)]['method']()
   else:
-    raise ValueError
+    raise InvalidCommandError
 
 def begin() -> None:
   """Serves as the entry method for AVMisc."""
@@ -99,7 +112,9 @@ def begin() -> None:
         process_command(command)
     except KeyboardInterrupt:
       sys.exit()
-    except ValueError:
+    except ValueError as err:
+      print(err)
+    except InvalidCommandError:
       print(f'\'{command}\' is not a recognized command. Type \'help\' for ' +
       'a list of available commands.')
 

@@ -3,7 +3,7 @@
 import re
 import pytest
 import avmisc
-from avmisc import Command, COMMANDS
+from avmisc import Command, COMMANDS, InvalidCommandError
 
 class TestAVMisc():
   def testCommandDictIsValid(self):
@@ -32,12 +32,12 @@ class TestAVMisc():
       assert command in Command
 
   def testProcessCommandShouldRaiseError(self):
-    with pytest.raises(ValueError):
+    with pytest.raises(InvalidCommandError):
       avmisc.process_command('foo')
 
   def testProcessCommandShouldNotRaiseError(self):
     try:
       avmisc.process_command(Command.LIST_ALL_AUDIO_DEVICES.value)
       assert True
-    except ValueError:
+    except InvalidCommandError:
       assert False, 'process_command failed unexpectedly.'
