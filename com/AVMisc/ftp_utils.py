@@ -1,4 +1,4 @@
-"""A collection of methods for uploading and downloading files to and from an FTP server."""
+"""A collection of methods for FTP upload/download."""
 
 from ftplib import FTP, error_perm
 from typing import Union
@@ -6,7 +6,7 @@ import getpass
 
 def connect_to_ftp_server() -> Union[FTP, None]:
   """Creates a connection to an FTP server.
-  
+
   Handles login using credentials if necessary.
 
   Returns:
