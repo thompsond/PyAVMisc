@@ -4,6 +4,7 @@ from enum import Enum
 from rich import print
 import audio_utils
 import misc_utils
+import ftp_utils
 
 class InvalidCommandError(Exception):
   pass
@@ -21,6 +22,8 @@ class Command(Enum):
   WRITE_CLIPBOARD = 'write_clipboard'
   START_CURSOR_JUMP = 'start_cursor_jump'
   SPEAK_TEXT = 'speak_text'
+  UPLOAD_FTP = 'upload_ftp'
+  DOWNLOAD_FTP = 'download_ftp'
   HELP = 'help'
   EXIT = 'exit'
 
@@ -68,6 +71,14 @@ COMMANDS = {
     Command.SPEAK_TEXT: {
         'description': 'Enter some text to speak through the system.',
         'method': misc_utils.speak_text
+    },
+    Command.UPLOAD_FTP: {
+        'description': 'Upload a file to an FTP server.',
+        'method': ftp_utils.upload
+    },
+    Command.DOWNLOAD_FTP: {
+        'description': 'Download a file from an FTP server.',
+        'method': ftp_utils.download
     },
     Command.EXIT: {
         'description': 'Exit the program.',
