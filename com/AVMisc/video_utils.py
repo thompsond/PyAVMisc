@@ -5,9 +5,8 @@ from common_utils import get_formatted_date
 
 
 def take_snapshot() -> None:
-  video_capture = None
+  video_capture = cv2.VideoCapture(0)
   try:
-    video_capture = cv2.VideoCapture(0)
     _, frame = video_capture.read()
     filename = f'Snapshot_{get_formatted_date()}.png'
     cv2.imwrite(filename, frame)
