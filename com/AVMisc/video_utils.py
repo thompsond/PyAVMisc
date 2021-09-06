@@ -4,7 +4,8 @@ import cv2
 from common_utils import get_formatted_date
 
 
-def take_snapshot():
+def take_snapshot() -> None:
+  video_capture = None
   try:
     video_capture = cv2.VideoCapture(0)
     _, frame = video_capture.read()
