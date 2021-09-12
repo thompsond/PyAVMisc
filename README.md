@@ -12,7 +12,7 @@ git clone https://github.com/thompsond/PyAVMisc.git
 
 On Linux, run the following before running the script:
 ```
-sudo apt-get install --no-install-recommends libportaudio2 libsndfile1
+sudo apt-get install libportaudio2 libsndfile1
 ```
 
 ## Usage
