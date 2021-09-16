@@ -25,7 +25,7 @@ PyMsgBox==1.0.9
 pyparsing==2.4.7
 pyperclip==1.8.2
 PyRect==0.1.4
-PyScreeze==0.1.27
+PyScreeze==0.1.28
 pytest==6.2.5
 pytest-mock==3.6.1
 PyTweening==1.0.3
