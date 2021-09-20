@@ -43,8 +43,10 @@ def get_simple_info(device_info: Dict) -> str:
   Args:
     device_info: A dictionary containing device info for an audio device.
   """
-  return ('Name: %s, Sample Rate: %s' %
-         (device_info['name'], device_info['default_samplerate']))
+  return (
+    f"Name: {device_info['name']}"
+    f"Sample Rate: {device_info['default_samplerate']}"
+  )
 
 def list_default_devices() -> None:
   """Lists the default audio devices on the system."""

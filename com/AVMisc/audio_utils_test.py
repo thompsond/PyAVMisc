@@ -27,7 +27,10 @@ class TestAudioUtils():
   def testGetSimpleInfo(self):
     """Make sure get_simple_info parses correctly."""
     actual = audio_utils.get_simple_info(INPUT_DEVICE_INFO)
-    expected = f'Name: {DEVICE_NAME_1}, Sample Rate: {DEFAULT_SAMPLE_RATE_1}'
+    expected = (
+      f'Name: {DEVICE_NAME_1}'
+      f'Sample Rate: {DEFAULT_SAMPLE_RATE_1}'
+    )
     assert actual == expected
 
   def testListDefaultDevices(self, mocker):
