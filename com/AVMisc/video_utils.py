@@ -13,6 +13,5 @@ def take_snapshot() -> None:
     print(f'Snapshot saved as {filename}.')
   except cv2.error as err:
     print(err)
-
   finally:
     video_capture.release()
