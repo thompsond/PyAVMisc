@@ -19,6 +19,8 @@ class Command(Enum):
   RECORD_AUDIO = 'record_audio'
   STOP_RECORDING_AUDIO = 'stop_recording_audio'
   TAKE_SNAPSHOT = 'snapshot'
+  RECORD_VIDEO = 'record_video'
+  STOP_RECORDING_VIDEO = 'stop_recording_video'
   TAKE_SCREENSHOT = 'screenshot'
   READ_CLIPBOARD = 'read_clipboard'
   WRITE_CLIPBOARD = 'write_clipboard'
@@ -57,6 +59,14 @@ COMMANDS = {
     Command.TAKE_SNAPSHOT: {
         'description': 'Take a picture with the webcam.',
         'method': video_utils.take_snapshot
+    },
+    Command.RECORD_VIDEO: {
+        'description': 'Record video with the webcam.',
+        'method': video_utils.start_video_record
+    },
+    Command.STOP_RECORDING_VIDEO: {
+        'description': 'Stop recording video.',
+        'method': video_utils.stop_recording_video
     },
     Command.TAKE_SCREENSHOT: {
         'description': 'Take a screenshot.',
