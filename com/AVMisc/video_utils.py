@@ -35,7 +35,7 @@ def _record_video(duration: int) -> None:
                        )
   try:
     remaining_frames = duration * fps
-    while remaining_frames != 0:
+    while remaining_frames > 0:
       ret, frame = video_capture.read()
       if ret:
         out.write(frame)
@@ -56,7 +56,7 @@ def start_video_record() -> None:
   duration = int(input('Enter the recording time in seconds: '))
   global _recording_video_process
   _recording_video_process = mp.Process(target=_record_video,
-   args=(duration,))
+                                        args=(duration,))
   _recording_video_process.start()
 
 def stop_recording_video() -> None:
