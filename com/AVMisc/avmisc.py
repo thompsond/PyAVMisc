@@ -18,7 +18,7 @@ class Command(Enum):
   STOP_PLAYING_AUDIO = 'stop_audio_playback'
   RECORD_AUDIO = 'record_audio'
   STOP_RECORDING_AUDIO = 'stop_recording_audio'
-  TAKE_SNAPSHOT = 'take_snapshot'
+  TAKE_SNAPSHOT = 'snapshot'
   TAKE_SCREENSHOT = 'screenshot'
   READ_CLIPBOARD = 'read_clipboard'
   WRITE_CLIPBOARD = 'write_clipboard'
