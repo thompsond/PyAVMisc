@@ -5,6 +5,7 @@ from common_utils import get_formatted_date
 
 
 def take_snapshot() -> None:
+  """Take a photo with the webcam."""
   video_capture = cv2.VideoCapture(0)
   try:
     _, frame = video_capture.read()
