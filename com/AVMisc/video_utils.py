@@ -1,6 +1,6 @@
 """A collection of methods for accessing local video devices and info."""
 
-import multiprocessing as mp
+import multiprocessing
 import cv2
 from common_utils import get_formatted_date
 
@@ -55,8 +55,8 @@ def start_video_record() -> None:
   """Create the process for recording video."""
   duration = int(input('Enter the recording time in seconds: '))
   global _recording_video_process
-  _recording_video_process = mp.Process(target=_record_video,
-                                        args=(duration,))
+  _recording_video_process = multiprocessing.Process(target=_record_video,
+                                                     args=(duration, ))
   _recording_video_process.start()
 
 def stop_recording_video() -> None:

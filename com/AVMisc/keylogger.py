@@ -1,6 +1,6 @@
 """Functions for running a keylogger."""
 
-import multiprocessing as mp
+import multiprocessing
 import os
 from pynput import keyboard
 
@@ -69,7 +69,7 @@ def _run_keylogger() -> None:
 def start_keylogger():
   """Create process for running the keylogger."""
   global _keylogger_process
-  _keylogger_process = mp.Process(target=_run_keylogger)
+  _keylogger_process = multiprocessing.Process(target=_run_keylogger)
   _keylogger_process.start()
 
 def stop_keylogger():
