@@ -29,7 +29,7 @@ PyRect==0.1.4
 PyScreeze==0.1.27
 pytest==6.2.5
 pytest-mock==3.6.1
-PyTweening==1.0.3
+PyTweening==1.0.4
 requests==2.26.0
 rich==10.15.1
 six==1.16.0
