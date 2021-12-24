@@ -144,7 +144,7 @@ def process_command(command: str) -> None:
     command: The name of the command to run.
 
   Raises:
-    ValueError: If an invalid command is given.
+    InvalidCommandError: If an invalid command is given.
   """
   if command in [member.value for member in Command.__members__.values()]:
     COMMANDS[Command(command)]['method']()
