@@ -20,7 +20,7 @@ py==1.11.0
 PyAutoGUI==0.9.53
 pycparser==2.21
 PyGetWindow==0.0.9
-Pygments==2.10.0
+Pygments==2.11.0
 PyMsgBox==1.0.9
 pynput==1.7.5
 pyparsing==3.0.6
@@ -33,7 +33,7 @@ PyTweening==1.0.4
 requests==2.26.0
 rich==10.15.2
 six==1.16.0
-sounddevice==0.4.2
+sounddevice==0.4.3
 SoundFile==0.10.3.post1
 toml==0.10.2
 urllib3==1.26.7
