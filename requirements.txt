@@ -31,7 +31,7 @@ pytest==6.2.5
 pytest-mock==3.6.1
 PyTweening==1.0.4
 requests==2.26.0
-rich==10.16.1
+rich==10.16.2
 six==1.16.0
 sounddevice==0.4.3
 SoundFile==0.10.3.post1
