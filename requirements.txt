@@ -22,7 +22,7 @@ pycparser==2.21
 PyGetWindow==0.0.9
 Pygments==2.11.2
 PyMsgBox==1.0.9
-pynput==1.7.5
+pynput==1.7.6
 pyparsing==3.0.6
 pyperclip==1.8.2
 PyRect==0.1.4
