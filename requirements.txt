@@ -33,7 +33,7 @@ PyTweening==1.0.4
 requests==2.26.0
 rich==10.16.2
 six==1.16.0
-sounddevice==0.4.3
+sounddevice==0.4.4
 SoundFile==0.10.3.post1
 toml==0.10.2
 urllib3==1.26.7
