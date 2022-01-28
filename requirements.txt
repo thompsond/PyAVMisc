@@ -36,4 +36,4 @@ six==1.16.0
 sounddevice==0.4.4
 SoundFile==0.10.3.post1
 toml==0.10.2
-urllib3==1.26.7
+urllib3==1.26.8
