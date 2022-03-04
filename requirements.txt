@@ -27,7 +27,7 @@ pyparsing==3.0.7
 pyperclip==1.8.2
 PyRect==0.1.4
 PyScreeze==0.1.28
-pytest==6.2.5
+pytest==7.0.1
 pytest-mock==3.7.0
 PyTweening==1.0.4
 requests==2.27.1
